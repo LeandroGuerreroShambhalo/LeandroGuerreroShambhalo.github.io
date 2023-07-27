@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #map-container {
+            position: relative;
+        }
+        #map-image {
+            width: 100%;
+            height: auto;
+        }
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .legend-item {
+            margin-bottom: 5px;
+        }
+        .legend-item input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <!-- Add your menu items here -->
+        <ul>
+            <li><a href="#map">Map</a></li>
+            <!-- Add more menu items if needed -->
+        </ul>
+    </div>
+
+    <div id="map-container">
+        <img id="map-image" src="default-map.jpg" alt="Interactive Map">
+        <div class="legend">
+            <div class="legend-item">
+                <input type="radio" name="map-type" id="map-type1" value="default-map.jpg" checked>
+                <label for="map-type1">Default Map</label>
+            </div>
+            <div class="legend-item">
+                <input type="radio" name="map-type" id="map-type2" value="map-type2.jpg">
+                <label for="map-type2">Map Type 2</label>
+            </div>
+            <!-- Add more legend items if needed -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code to handle changing the map image based on the selected legend item
+        const mapImage = document.getElementById("map-image");
+        const legendItems = document.querySelectorAll('input[type="radio"][name="map-type"]');
+
+        for (const item of legendItems) {
+            item.addEventListener("change", function() {
+                mapImage.src = this.value;
+            });
+        }
+    </script>
+</body>
+</html>
